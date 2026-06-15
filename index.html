@@ -27,14 +27,15 @@
 }
 
 body{
-    min-height:100vh;
+    min-height:100svh;
     display:flex;
     justify-content:center;
     align-items:center;
     background:#050505;
-    overflow:hidden;
+    overflow-x:hidden;
     color:#fff;
     position:relative;
+    padding:15px;
 }
 
 body::before{
@@ -67,9 +68,9 @@ body::after{
 .card{
     position:relative;
     z-index:2;
-    width:92%;
+    width:100%;
     max-width:430px;
-    padding:30px;
+    padding:clamp(18px,4vw,30px);
     border-radius:24px;
     background:rgba(255,255,255,.05);
     backdrop-filter:blur(14px);
@@ -117,7 +118,7 @@ body::after{
 }
 
 h1{
-    font-size:30px;
+    font-size:clamp(22px,6vw,30px);
     margin-bottom:10px;
     line-height:1.2;
 }
@@ -142,10 +143,11 @@ h1{
     color:#d8d8d8;
     line-height:1.6;
     margin-bottom:18px;
+    font-size:clamp(14px,3.5vw,16px);
 }
 
 .percent{
-    font-size:52px;
+    font-size:clamp(40px,10vw,52px);
     font-weight:bold;
     text-align:center;
     color:#ff5c9d;
@@ -199,14 +201,14 @@ h1{
 }
 
 .number{
-    font-size:20px;
+    font-size:clamp(16px,4vw,20px);
     font-weight:bold;
 }
 
 .countdown{
     margin-top:22px;
     text-align:center;
-    font-size:22px;
+    font-size:clamp(18px,5vw,22px);
     font-weight:bold;
 }
 
@@ -215,6 +217,30 @@ h1{
     text-align:center;
     color:#9a9a9a;
     font-size:12px;
+}
+
+@media (max-width:480px){
+
+    .stats{
+        gap:10px;
+    }
+
+    .live{
+        font-size:12px;
+    }
+
+    .badge{
+        font-size:13px;
+    }
+
+    .step{
+        font-size:13px;
+        padding:10px;
+    }
+
+    .footer{
+        font-size:11px;
+    }
 }
 </style>
 </head>
@@ -245,17 +271,14 @@ h1{
     </div>
 
     <div class="loading-box">
-
         <div class="step">✓ Checking Stream Availability</div>
         <div class="step">✓ Verifying Secure Access</div>
         <div class="step">✓ Preparing Live Connection</div>
         <div class="step">✓ Unlocking FREE Features</div>
         <div class="step">✓ Finalizing Private Access</div>
-
     </div>
 
     <div class="stats">
-
         <div class="stat">
             <div class="number" id="online">2847</div>
             <div>Watching</div>
@@ -270,7 +293,6 @@ h1{
             <div class="number">24/7</div>
             <div>LIVE</div>
         </div>
-
     </div>
 
     <div class="countdown">
@@ -291,7 +313,6 @@ const percentText = document.getElementById("percent");
 const bar = document.getElementById("bar");
 
 const percentInterval = setInterval(() => {
-
     percent += 2;
 
     percentText.textContent = percent + "%";
@@ -300,21 +321,18 @@ const percentInterval = setInterval(() => {
     if(percent >= 100){
         clearInterval(percentInterval);
     }
-
 },100);
 
 const steps = document.querySelectorAll(".step");
 let current = 0;
 
 const stepInterval = setInterval(() => {
-
     if(current < steps.length){
         steps[current].classList.add("active");
         current++;
     }else{
         clearInterval(stepInterval);
     }
-
 },1000);
 
 setInterval(() => {
@@ -325,7 +343,6 @@ setInterval(() => {
 let time = 4;
 
 const countdown = setInterval(() => {
-
     time--;
 
     document.getElementById("timer").textContent = time;
@@ -334,9 +351,8 @@ const countdown = setInterval(() => {
         clearInterval(countdown);
         window.location.href = OFFER_LINK;
     }
-
 },1000);
 </script>
 
 </body>
-</html>
+    </html>
